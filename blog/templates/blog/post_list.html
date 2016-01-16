@@ -3,17 +3,23 @@
         <title>Henriettas blogg</title>
     </head>
     <body>
-    	<div>
-    	<h1> La oss prøve dette</h1> 
-    	</div>
+        <div>
+            <h1><a href="">Henriettas blogg</a></h1>
+        </div>
 
-    	<div>
-    	 	<h2> Første innlegg </h2>
-    	 </div>
+    	{% for post in posts %}
+    		<div>
+       	 		<p>published: {{ post.published_date }}</p>
+        		<h1><a href="">{{ post.title }}</a></h1>
+        		<p>{{ post.text|linebreaks }}</p>
+   		 		</div>
+		{% endfor %}
 
-			<p>Hi there!</p>
-        	<p>It works!</p>
-
+        <div>
+            <p>published: 16.01.2016, 15:23</p>
+            <h2><a href="">My second post</a></h2>
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
+        </div>
     </body>
 </html>
 
