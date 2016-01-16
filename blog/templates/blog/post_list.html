@@ -1,29 +1,15 @@
-<html>
-    <head>
-        <title>Henriettas blogg</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Henriettas blogg</a></h1>
-        </div>
-
-    	{% for post in posts %}
-    		<div>
-       	 		<p>published: {{ post.published_date }}</p>
-        		<h1><a href="">{{ post.title }}</a></h1>
-        		<p>{{ post.text|linebreaks }}</p>
-   		 		</div>
-		{% endfor %}
-
-        <div>
-            <p>published: 16.01.2016, 15:23</p>
-            <h2><a href="">My second post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-        </div>
-    </body>
-</html>
-
-
+{% extends 'blog/base.html' %}
+{% block content %}
+	{% for post in posts %}
+    	<div class="post">
+        	<div class="date">
+            	{{ post.published_date }}
+        	</div>
+        	<h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+        	<p>{{ post.text|linebreaks }}</p>
+    	</div>
+	{% endfor %}
+{% endblock %}
 
 <!--<h1>A heading</h1> - for your most important heading
 <h2>A sub-heading</h2> for a heading at the next level
@@ -33,4 +19,26 @@
 <br /> goes to another line (you can't put anything inside br)
 <a href="http://djangogirls.org">link</a> creates a link
 <ul><li>first item</li><li>second item</li></ul> makes a list, just like this one!
-<div></div> defines a section of the page -->
+<div></div> defines a section of the page
+
+
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Henriettas blogg</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+		<link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="">Henriettas blogg</a></h1>
+        </div>
+
+    	<div class="content container">
+    		<div class="row">
+        		<div class="col-md-8">
+
+ -->
